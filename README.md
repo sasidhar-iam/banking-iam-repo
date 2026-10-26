@@ -79,3 +79,11 @@ Use sample data only. Do not upload employer-owned code, live credentials or cus
 ## Licence
 
 This repository uses the [MIT License](LICENSE).
+
+## Product-specific labs
+
+- [PingAccess CIAM Lab](https://github.com/sasidhar-iam/pingaccess-ciam-lab): access policies, Groovy examples and route designs.
+- [PingDirectory CIAM Lab](https://github.com/sasidhar-iam/pingdirectory-ciam-lab): LDAP/LDIF utilities and a Java lookup example.
+- [Ping Identity CIAM Lab](https://github.com/sasidhar-iam/ping-identity-ciam-lab): PKCE, callbacks and opaque refresh-token request handling.
+
+Read the [Ping release changes and CIAM impact guide](docs/PING-CHANGES-2026-10.md), checked 26 October 2026, before planning an upgrade. These labs contain educational components; live vendor integration testing remains separate.

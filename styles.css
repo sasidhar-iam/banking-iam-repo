@@ -1,0 +1,524 @@
+:root {
+  color-scheme: light;
+  --ink: #172026;
+  --muted: #5d6a72;
+  --line: #dce3e8;
+  --panel: #ffffff;
+  --panel-soft: #f6f8f4;
+  --mint: #1f8a70;
+  --mint-dark: #12624e;
+  --gold: #c5861f;
+  --coral: #c4543d;
+  --code-bg: #132026;
+  --code-fg: #d9efe7;
+  --shadow: 0 18px 45px rgba(23, 32, 38, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    linear-gradient(135deg, rgba(31, 138, 112, 0.08), rgba(197, 134, 31, 0.06)),
+    #eef3f0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+select {
+  min-height: 42px;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 28px 22px;
+  background: #14242a;
+  color: #eef8f5;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--mint), var(--gold));
+  color: #fff;
+  font-weight: 800;
+}
+
+.brand h1,
+.brand p,
+.topbar h2,
+.lesson-panel h3,
+.comparison-panel h3,
+.workbench h3,
+.quiz-panel h3 {
+  margin: 0;
+}
+
+.brand h1 {
+  font-size: 1.35rem;
+}
+
+.brand p {
+  color: #b9cbc5;
+  margin-top: 4px;
+}
+
+.nav-list {
+  display: grid;
+  gap: 8px;
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  color: #e9f4f1;
+  background: transparent;
+  text-align: left;
+}
+
+.nav-button:hover,
+.nav-button.active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.check {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: transparent;
+}
+
+.nav-button.done .check {
+  border-color: var(--mint);
+  background: var(--mint);
+  color: #fff;
+}
+
+.progress-card {
+  margin-top: auto;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.progress-track {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+#progressBar {
+  width: 0;
+  height: 100%;
+  background: var(--gold);
+  transition: width 180ms ease;
+}
+
+.main {
+  display: grid;
+  gap: 22px;
+  align-content: start;
+  padding: 28px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--mint-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.topbar h2 {
+  font-size: clamp(1.8rem, 4vw, 3.4rem);
+  line-height: 1.05;
+}
+
+.language-toggle,
+.button-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.toggle-button,
+.secondary-button,
+.primary-button {
+  border-radius: 8px;
+  padding: 10px 14px;
+  white-space: nowrap;
+}
+
+.toggle-button,
+.secondary-button {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+}
+
+.toggle-button.active,
+.primary-button {
+  background: var(--mint);
+  color: #fff;
+}
+
+.primary-button:hover,
+.toggle-button.active:hover {
+  background: var(--mint-dark);
+}
+
+.secondary-button:hover {
+  border-color: var(--mint);
+  color: var(--mint-dark);
+}
+
+.progress-card .secondary-button {
+  width: 100%;
+  margin-top: 14px;
+  background: transparent;
+  color: #eef8f5;
+}
+
+.lesson-grid,
+.workbench {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(360px, 1.15fr);
+  gap: 20px;
+}
+
+.lesson-panel,
+.comparison-panel,
+.editor-panel,
+.output-panel,
+.quiz-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.lesson-panel,
+.editor-panel,
+.output-panel,
+.quiz-panel {
+  padding: 22px;
+}
+
+.panel-heading {
+  display: flex;
+  gap: 14px;
+}
+
+.icon-circle {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #e5f3ed;
+  color: var(--mint-dark);
+  font-weight: 800;
+}
+
+#lessonSummary {
+  margin: 8px 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.key-list {
+  display: grid;
+  gap: 12px;
+  margin: 22px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.key-list li {
+  padding-left: 18px;
+  border-left: 3px solid var(--gold);
+  line-height: 1.45;
+}
+
+.deep-guide {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 22px;
+  padding: 16px;
+  border-radius: 8px;
+  background: var(--panel-soft);
+}
+
+.deep-guide h4 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--mint-dark);
+  text-transform: uppercase;
+}
+
+.deep-guide p {
+  margin: 0 0 8px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.comparison-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+
+.code-column {
+  min-width: 0;
+}
+
+.code-column:first-child {
+  border-right: 1px solid #2c424a;
+}
+
+.code-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: #20323a;
+  color: #fff;
+}
+
+.language-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.groovy-dot {
+  background: var(--coral);
+}
+
+.js-dot {
+  background: var(--gold);
+}
+
+pre {
+  margin: 0;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.comparison-panel pre,
+#outputBox {
+  min-height: 250px;
+  padding: 18px;
+  background: var(--code-bg);
+  color: var(--code-fg);
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.panel-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+select {
+  max-width: 260px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #fff;
+}
+
+textarea {
+  width: 100%;
+  min-height: 270px;
+  resize: vertical;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  background: #fbfcfb;
+  color: var(--ink);
+  font-family: Consolas, "Courier New", monospace;
+  line-height: 1.5;
+}
+
+.button-row {
+  margin-top: 12px;
+}
+
+.terminal-note {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 8px;
+  background: var(--panel-soft);
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.terminal-note code {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.quiz-panel {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.8fr) minmax(320px, 1.2fr);
+  gap: 20px;
+}
+
+.quiz-panel p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.quiz-options {
+  display: grid;
+  gap: 10px;
+}
+
+.quiz-option {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: #fff;
+  text-align: left;
+}
+
+.quiz-option:hover {
+  border-color: var(--mint);
+}
+
+.quiz-option.correct {
+  border-color: var(--mint);
+  background: #e5f3ed;
+}
+
+.quiz-option.incorrect {
+  border-color: var(--coral);
+  background: #fcece8;
+}
+
+.quiz-feedback {
+  min-height: 24px;
+}
+
+body.focus-groovy .javascript-column,
+body.focus-javascript .groovy-column {
+  display: none;
+}
+
+body.focus-groovy .comparison-panel,
+body.focus-javascript .comparison-panel {
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 980px) {
+  .app-shell,
+  .lesson-grid,
+  .workbench,
+  .quiz-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    min-height: auto;
+  }
+
+  .comparison-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .code-column:first-child {
+    border-right: 0;
+    border-bottom: 1px solid #2c424a;
+  }
+}
+
+@media (max-width: 620px) {
+  .main,
+  .sidebar {
+    padding: 18px;
+  }
+
+  .topbar,
+  .panel-title-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .language-toggle,
+  .button-row {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .toggle-button,
+  .secondary-button,
+  .primary-button,
+  select {
+    width: 100%;
+  }
+}

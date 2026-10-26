@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Programming Basics, Groovy, and JavaScript Learning Lab</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Learning sections">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">GJ</div>
+          <div>
+            <h1>Script Lab</h1>
+            <p>Basics + Groovy + JavaScript</p>
+          </div>
+        </div>
+
+        <nav class="nav-list" id="lessonNav" aria-label="Lessons"></nav>
+
+        <section class="progress-card" aria-label="Progress">
+          <div class="progress-header">
+            <span>Learning progress</span>
+            <strong id="progressLabel">0%</strong>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <div id="progressBar"></div>
+          </div>
+          <button class="secondary-button" id="resetProgress" type="button">Reset</button>
+        </section>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Local learning app</p>
+            <h2 id="lessonTitle">Loading...</h2>
+          </div>
+          <div class="language-toggle" role="group" aria-label="Language focus">
+            <button class="toggle-button active" data-focus="both" type="button">Both</button>
+            <button class="toggle-button" data-focus="groovy" type="button">Groovy</button>
+            <button class="toggle-button" data-focus="javascript" type="button">JavaScript</button>
+          </div>
+        </header>
+
+        <section class="lesson-grid">
+          <article class="lesson-panel">
+            <div class="panel-heading">
+              <span class="icon-circle" aria-hidden="true">{ }</span>
+              <div>
+                <h3 id="lessonSubtitle">Core idea</h3>
+                <p id="lessonSummary"></p>
+              </div>
+            </div>
+            <ul class="key-list" id="keyPoints"></ul>
+            <div class="deep-guide">
+              <h4>Why this matters</h4>
+              <p id="lessonDetail"></p>
+              <h4>Practice prompt</h4>
+              <p id="practicePrompt"></p>
+            </div>
+            <button class="primary-button" id="completeLesson" type="button">Mark lesson complete</button>
+          </article>
+
+          <article class="comparison-panel">
+            <div class="code-column groovy-column">
+              <div class="code-heading">
+                <span class="language-dot groovy-dot"></span>
+                <h3>Groovy Script</h3>
+              </div>
+              <pre><code id="groovyCode"></code></pre>
+            </div>
+            <div class="code-column javascript-column">
+              <div class="code-heading">
+                <span class="language-dot js-dot"></span>
+                <h3>JavaScript</h3>
+              </div>
+              <pre><code id="javascriptCode"></code></pre>
+            </div>
+          </article>
+        </section>
+
+        <section class="workbench">
+          <div class="editor-panel">
+            <div class="panel-title-row">
+              <h3>Practice Pad</h3>
+              <select id="samplePicker" aria-label="Load a practice sample"></select>
+            </div>
+            <textarea id="practiceEditor" spellcheck="false" aria-label="Practice code editor"></textarea>
+            <div class="button-row">
+              <button class="primary-button" id="runJavaScript" type="button">Run JavaScript</button>
+              <button class="secondary-button" id="debugCode" type="button">Debug</button>
+              <button class="secondary-button" id="findFaults" type="button">Find Faults</button>
+              <button class="secondary-button" id="explainCode" type="button">Explain</button>
+              <button class="secondary-button" id="loadGroovy" type="button">Load Groovy Sample</button>
+            </div>
+          </div>
+
+          <div class="output-panel">
+            <h3>Output</h3>
+            <pre id="outputBox">Choose a basics, JavaScript, or Groovy sample here.</pre>
+            <div class="terminal-note">
+              <strong>Groovy tip:</strong>
+              <span>Save a Groovy sample as <code>hello.groovy</code>, then run <code>groovy hello.groovy</code> if Groovy is installed.</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="quiz-panel">
+          <div>
+            <h3>Quick Check</h3>
+            <p id="quizQuestion"></p>
+          </div>
+          <div class="quiz-options" id="quizOptions"></div>
+          <p class="quiz-feedback" id="quizFeedback" aria-live="polite"></p>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

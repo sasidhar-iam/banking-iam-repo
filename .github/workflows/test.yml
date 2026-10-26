@@ -30,3 +30,40 @@ jobs:
           java-version: '17'
       - run: sudo apt-get update && sudo apt-get install -y groovy
       - run: groovy -cp groovy groovy/AccessPolicyTest.groovy
+  learning-app:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check learning app JavaScript syntax
+        run: node --check app.js
+      - name: Check PDF generator Python syntax
+        run: python -m py_compile generate_cc_practice_pdfs.py
+      - name: Check local HTML asset references
+        run: |
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import urlsplit, unquote
+          
+          class AssetCheck(HTMLParser):
+              def handle_starttag(self, tag, attrs):
+                  values = dict(attrs)
+                  attribute = {"script": "src", "link": "href"}.get(tag)
+                  if not attribute or not values.get(attribute):
+                      return
+                  url = urlsplit(values[attribute])
+                  if url.scheme or url.netloc or not url.path:
+                      return
+                  path = Path(unquote(url.path))
+                  if path.is_absolute() or not path.is_file():
+                      raise SystemExit(f"Missing local asset: {url.path}")
+          
+          AssetCheck().feed(Path("index.html").read_text())
+          print("Local script and stylesheet references exist")
+          PY

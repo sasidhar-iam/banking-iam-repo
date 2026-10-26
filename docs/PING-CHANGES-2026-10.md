@@ -91,11 +91,12 @@ Run these against the actual configured products. Current repository unit tests 
 
 Record the source/target patches, JDK, extension versions, configuration export hashes, rollback prerequisites, test owner and result. Establish latency/error/replication baselines. Rehearse restore on non-production data and confirm whether downgrade is supported; a binary rollback may not reverse a data or configuration migration.
 
-## Separate repository starters
+## Product-specific repositories
 
-The repository contains prepared starters under repository-starters/:
-- pingaccess-ciam-lab
-- pingdirectory-ciam-lab
-- ping-identity-ciam-lab, including PingFederate and cloud integration work
+The prepared starters have now been populated as separate public labs:
 
-These folders are preparation material, not separate GitHub repositories yet. They contain plans, not verified vendor integrations.
+- [PingAccess CIAM Lab](https://github.com/sasidhar-iam/pingaccess-ciam-lab): access policies and organic refresh-token migration routing.
+- [PingDirectory CIAM Lab](https://github.com/sasidhar-iam/pingdirectory-ciam-lab): purge sizing, daily disk reports, replication and profile migration.
+- [Ping Identity CIAM Lab](https://github.com/sasidhar-iam/ping-identity-ciam-lab): OAuth helpers and SAML/OIDC multi-store federation.
+
+The original repository-starters folders remain planning snapshots. Consult each live lab's README for implemented examples, checks and remaining vendor integration work.

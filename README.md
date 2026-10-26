@@ -1,5 +1,8 @@
 # Banking IAM and Programming Lab
 
+**Repository created:** 6 November 2025 (UTC), as recorded in [GitHub’s repository metadata](https://api.github.com/repos/sasidhar-iam/banking-iam-repo).
+
+
 This repository brings together CIAM examples and a small programming learning app. It covers Java consent logic, JavaScript OAuth helpers, Groovy access checks, and basic lessons for practising code.
 
 The examples are for learning and experimentation. Some parts run on their own; a complete login flow with an identity provider is still planned.

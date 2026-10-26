@@ -1,0 +1,16 @@
+name: CIAM implementation
+description: Propose an implementation or integration
+title: "[CIAM] "
+body:
+  - type: textarea
+    id: scenario
+    attributes:
+      label: Customer scenario and trust boundary
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria and negative tests
+    validations:
+      required: true

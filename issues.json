@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Implement OIDC token exchange and ID-token validation",
+    "body": "## Scenario and acceptance criteria\n\nUse a standards library against a local test IdP. Validate signature, issuer, audience, nonce, exp and algorithm allowlist. Tests: wrong issuer/audience/nonce, expired token, key rollover; never log tokens.\n\nStatus: planned integration. See docs/BACKLOG.md and docs/TEST-CASES.md."
+  },
+  {
+    "title": "Add durable consent persistence and revocation events",
+    "body": "## Scenario and acceptance criteria\n\nReplace in-memory storage with transactional persistence and outbox events. Tests: concurrent revoke/access, restart recovery, cross-customer isolation, duplicate requests and bounded cache invalidation.\n\nStatus: planned integration. See docs/BACKLOG.md and docs/TEST-CASES.md."
+  },
+  {
+    "title": "Build versioned PingGateway route integration",
+    "body": "## Scenario and acceptance criteria\n\nSelect and document a supported product version. Convert generic routes to verified importable configuration. Validate JWT before Groovy. Tests: spoofed headers, invalid JWT, insufficient scope and backend outage.\n\nStatus: planned integration. See docs/BACKLOG.md and docs/TEST-CASES.md."
+  },
+  {
+    "title": "Add refresh-token rotation and reuse-detection lab",
+    "body": "## Scenario and acceptance criteria\n\nUse an established authorization server, not a custom issuer. Demonstrate atomic token rotation and family invalidation. Tests: replay, concurrent refresh, logout, expired token and no secret logging.\n\nStatus: planned integration. See docs/BACKLOG.md and docs/TEST-CASES.md."
+  },
+  {
+    "title": "Add PAR and confidential client integration lab",
+    "body": "## Scenario and acceptance criteria\n\nImplement provider-backed PAR with exact redirect URI registration and protected client authentication. Tests: expired/replayed request_uri, client mismatch and malformed scope. Do not claim CDR certification.\n\nStatus: planned integration. See docs/BACKLOG.md and docs/TEST-CASES.md."
+  },
+  {
+    "title": "Create CIAM operational telemetry and incident lab",
+    "body": "## Scenario and acceptance criteria\n\nAdd redacted structured events, correlation IDs and bounded metric labels. Tests: no tokens/PII in logs, alert on error-rate threshold and documented key-rotation troubleshooting.\n\nStatus: planned integration. See docs/BACKLOG.md and docs/TEST-CASES.md."
+  }
+]

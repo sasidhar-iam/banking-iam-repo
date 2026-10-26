@@ -1,0 +1,38 @@
+{
+  "kind": "vendor-neutral-design-not-importable",
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/accounts",
+      "sequence": [
+        "remove inbound identity headers",
+        "validate JWT signature, algorithm, issuer, audience, exp and nbf",
+        "require accounts:read",
+        "check subject and client bound active consent",
+        "forward to fixed account backend"
+      ],
+      "unauthenticated": 401,
+      "denied": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/consents",
+      "sequence": [
+        "authenticate session",
+        "validate CSRF and origin",
+        "validate scope allowlist and expiry",
+        "persist consent bound to authenticated subject and registered client"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/consents/{id}",
+      "sequence": [
+        "authenticate session",
+        "validate CSRF and origin",
+        "check ownership",
+        "revoke and emit redacted audit event"
+      ]
+    }
+  ]
+}

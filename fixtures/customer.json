@@ -1,0 +1,8 @@
+{
+  "subject": "synthetic-customer-001",
+  "client_id": "demo-budget-app",
+  "scopes": [
+    "accounts:read"
+  ],
+  "notice": "Entirely synthetic; no employer or customer data"
+}

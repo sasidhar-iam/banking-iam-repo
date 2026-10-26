@@ -1,0 +1,32 @@
+name: CIAM verification
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  javascript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test javascript/*.test.mjs
+  java:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - run: mkdir -p build && javac -d build java/*.java && java -cp build ConsentServiceTest
+  groovy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - run: sudo apt-get update && sudo apt-get install -y groovy
+      - run: groovy -cp groovy groovy/AccessPolicyTest.groovy

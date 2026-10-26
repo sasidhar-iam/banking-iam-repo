@@ -1,0 +1,12 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {challenge,beginLogin,consumeCallback} from './pkce.mjs';
+test('RFC 7636 known S256 vector',()=>assert.equal(challenge('dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk'),'E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM'));
+test('reject short verifier',()=>assert.throws(()=>challenge('short')));
+const login=()=>beginLogin({issuer:'https://id.example.test/tenant/',clientId:'demo',redirectUri:'https://app.example.test/callback'});
+test('authorization request uses code S256 and fresh state',()=>{const a=login(),b=login();const u=new URL(a.url);assert.equal(u.searchParams.get('code_challenge_method'),'S256');assert.equal(u.searchParams.get('response_type'),'code');assert.notEqual(a.transaction.state,b.transaction.state);});
+test('valid callback consumed once',()=>{const s={transaction:login().transaction};const p={state:s.transaction.state,code:'sample'};assert.equal(consumeCallback(p,s).code,'sample');assert.throws(()=>consumeCallback(p,s));});
+test('state mismatch consumes transaction',()=>{const s={transaction:login().transaction};assert.throws(()=>consumeCallback({state:'wrong',code:'x'},s),/invalid_state/);assert.equal(s.transaction,undefined);});
+test('expired callback',()=>{const s={transaction:login().transaction};assert.throws(()=>consumeCallback({},s,s.transaction.createdAt+300001),/expired/);});
+test('provider error rejected',()=>{const s={transaction:login().transaction};assert.throws(()=>consumeCallback({state:s.transaction.state,error:'access_denied'},s));});
+test('insecure issuer rejected',()=>assert.throws(()=>beginLogin({issuer:'http://id.example.test'})));

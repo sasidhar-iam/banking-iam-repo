@@ -87,3 +87,14 @@ This repository uses the [MIT License](LICENSE).
 - [Ping Identity CIAM Lab](https://github.com/sasidhar-iam/ping-identity-ciam-lab): PKCE, callbacks and opaque refresh-token request handling.
 
 Read the [Ping release changes and CIAM impact guide](docs/PING-CHANGES-2026-10.md), checked 26 October 2026, before planning an upgrade. These labs contain educational components; live vendor integration testing remains separate.
+
+## Practical CIAM scenarios
+
+| Scenario | Guide and runnable examples |
+| --- | --- |
+| Eight-day retention, purge sizing and day-by-day disk growth | [PingDirectory operations](https://github.com/sasidhar-iam/pingdirectory-ciam-lab/blob/main/docs/operations/README.md) |
+| Multi-master replication and NoSQL profile migration | [Replication](https://github.com/sasidhar-iam/pingdirectory-ciam-lab/blob/main/docs/operations/replication.md) and [migration](https://github.com/sasidhar-iam/pingdirectory-ciam-lab/blob/main/docs/operations/migration-and-token-stores.md) |
+| SAML-to-OIDC federation with LDAP, AD and database users | [Multi-store federation](https://github.com/sasidhar-iam/ping-identity-ciam-lab/blob/main/docs/saml-oidc-multi-store.md) |
+| Organic ADR refresh-token migration to PingDirectory | [Open Banking migration routing](https://github.com/sasidhar-iam/pingaccess-ciam-lab/blob/main/docs/open-banking-refresh-migration.md) |
+
+Each lab distinguishes tested local models from vendor configuration examples and integration work that remains to be completed.

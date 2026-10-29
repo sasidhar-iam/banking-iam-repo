@@ -98,3 +98,7 @@ Read the [Ping release changes and CIAM impact guide](docs/PING-CHANGES-2026-10.
 | Organic ADR refresh-token migration to PingDirectory | [Open Banking migration routing](https://github.com/sasidhar-iam/pingaccess-ciam-lab/blob/main/docs/open-banking-refresh-migration.md) |
 
 Each lab distinguishes tested local models from vendor configuration examples and integration work that remains to be completed.
+
+## ForgeRock IDM / PingIDM vulnerability review
+
+Read the [IDM 7.1+ CVE review](https://github.com/sasidhar-iam/ping-identity-ciam-lab/blob/main/docs/security/pingidm-cve-review-2026-10-29.md), checked 29 October 2026. It covers RCS access control, query-filter disclosure, LDAP connector versions, CIAM regression checks and vendor-verification gaps. It is a public-source review, not a scan of any deployment.
